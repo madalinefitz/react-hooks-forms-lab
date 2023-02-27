@@ -16,17 +16,14 @@ function ShoppingList({ items, onItemFormSubmit}) {
   }
 
   const itemsToDisplay = items.filter((item) => {
-    if (selectedCategory === 'All' + selectedItem === '') return true
-
+    if (selectedItem === '' && selectedCategory === 'All') return true
+    
+    const name = (item.name).toLowerCase()
     if (item.category === selectedCategory){ 
       return item
-    } else if (item.name === selectedItem) {
+    } else if (name.includes(selectedItem.toLowerCase())) {
       return item
     } 
-
-  //   if (selectedCategory === 'All') return true
-
-  //   return selectedCategory === item.category
   })
 
   return (
